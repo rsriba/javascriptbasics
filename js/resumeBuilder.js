@@ -63,18 +63,11 @@ var bio = {
 var work = {
     "jobs" : [
         {
-        "employer" : "Amazon",
-        "title" : "Web developer",
+        "employer" : "Indian Institute of Technology - Madras",
+        "title" : "Intern",
         "location" : "Chennai",
-        "dates" : "2014-2015",
-        "description" : "Worked on the website using HTML, CSS and JS"
-        },
-        {
-        "employer" : "Microsoft",
-        "title" : "Front end developer",
-        "location" : "Chennai",
-        "dates" : "2015-2016",
-        "description" : "Worked on the app using HTML, CSS and JS"
+        "dates" : "May-June 2013",
+        "description" : "Worked on Microarray data analysis"
         }
     ]
 };
@@ -150,14 +143,7 @@ if ( bio["skills"].length !== 0) {
     var formattedskills = HTMLskills.replace("%data%",bio.skills[3]);
     $("#skills").append(formattedskills);
 }
-/*
-for (data in work.jobs) {
-    $("#workExperience").append(HTMLworkStart);
-    var formattedemployer = HTMLworkEmployer.replace("%data%",work["jobs"][data].employer);
-    var formattedworktitle = HTMLworkTitle.replace("%data%",work.jobs[data]["title"]);
-    $(".work-entry:last").append(formattedemployer + formattedworktitle);
-}
-*/
+
 function displaywork(){
   work.jobs.forEach(function(data){
     $("#workExperience").append(HTMLworkStart);
@@ -231,172 +217,3 @@ education.onlinedisplay = function(){
 }
 education.onlinedisplay();
 
-//stupid additional quizzes
-/*
-var moonWalkers = [
-  "Neil Armstrong",
-  "Buzz Aldrin",
-  "Pete Conrad",
-  "Alan Bean",
-  "Alan Shepard",
-  "Edgar Mitchell",
-  "David Scott",
-  "James Irwin",
-  "John Young",
-  "Charles Duke",
-  "Eugene Cernan",
-  "Harrison Schmitt"
-];
-
-function alphabetizer(names) {
-    // Your code goes here!
-    if (names.length > 0){
-    var array = [];
-    names.forEach(function(data){
-        var temp = data.split(" ");
-        temp.push(temp[0]);
-        temp.splice(0,1);
-        array.push(temp[0]+", "+temp[1]);
-        })
-    array.sort();
-    return array;
-    }
-    else return "no names in array";
-}
-// Try logging your results to test your code!
-console.log(alphabetizer(moonWalkers));
-*/
-// Iterate through the localizedRuleNames in ruleResults and
-// return an array of their strings.
-function ruleList(results) {
-    // Your code goes here!
-//    var dataa = results.formattedResults.ruleResults;
-    var array = [];
-    for (data in results.formattedResults.ruleResults){
-//        console.log(dataa[data]);
-//        console.log(dataa.data); results undefined
-//        console.log(data[localizedRuleName]); returns undefined
-        array.push(results.formattedResults.ruleResults[data].localizedRuleName);
-    }
-    return array;
-}
-
-// Iterate through pageStats in the psiResults object and
-// return the total number of bytes to load the website.
-function totalBytes(results) {
-    // Your code goes here!
-    var totalBytes = 0;
-    for (data in results.pageStats){
-        if (typeof results.pageStats[data] !=='number'){
-            totalBytes = totalBytes + parseInt(results.pageStats[data],10);
-            console.log(totalBytes);
-        }
-    }
-    return totalBytes;
-}
-
-// Below, you'll find a sample PS Insights JSON
-// and two console.log statements to help you test your code!
-
-psinsights = {
- "kind": "pagespeedonline#result",
- "id": "/speed/pagespeed",
- "responseCode": 200,
- "title": "PageSpeed Home",
- "score": 90,
- "pageStats": {
-  "numberResources": 22,
-  "numberHosts": 7,
-  "totalRequestBytes": "2761",
-  "numberStaticResources": 16,
-  "htmlResponseBytes": "91981",
-  "cssResponseBytes": "37728",
-  "imageResponseBytes": "13909",
-  "javascriptResponseBytes": "247214",
-  "otherResponseBytes": "8804",
-  "numberJsResources": 6,
-  "numberCssResources": 2
- },
- "formattedResults": {
-  "locale": "en_US",
-  "ruleResults": {
-    "AvoidBadRequests": {
-      "localizedRuleName": "Avoid bad requests",
-      "ruleImpact": 0.0
-    },
-    "MinifyJavaScript": {
-      "localizedRuleName": "Minify JavaScript",
-      "ruleImpact": 0.1417,
-      "urlBlocks": [
-      {
-        "header": {
-       "format": "Minifying the following JavaScript resources could reduce their size by $1 ($2% reduction).",
-       "args": [
-        {
-         "type": "BYTES",
-         "value": "1.3KiB"
-        },
-        {
-         "type": "INT_LITERAL",
-         "value": "0"
-        }
-       ]
-        },
-        "urls": [
-        {
-          "result": {
-         "format": "Minifying $1 could save $2 ($3% reduction).",
-         "args": [
-          {
-           "type": "URL",
-           "value": "http://code.google.com/js/codesite_tail.pack.04102009.js"
-          },
-          {
-           "type": "BYTES",
-           "value": "717B"
-          },
-          {
-           "type": "INT_LITERAL",
-           "value": "1"
-          }
-         ]
-        }
-       },
-       {
-        "result": {
-         "format": "Minifying $1 could save $2 ($3% reduction).",
-         "args": [
-          {
-           "type": "URL",
-           "value": "http://www.gmodules.com/ig/proxy?url\u003dhttp%3A%2F%2Fjqueryjs.googlecode.com%2Ffiles%2Fjquery-1.2.6.min.js"
-          },
-          {
-           "type": "BYTES",
-           "value": "258B"
-          },
-          {
-           "type": "INT_LITERAL",
-           "value": "0"
-          }
-         ]
-        }
-       }
-      ]
-     }
-    ]
-   },
-   "SpriteImages": {
-    "localizedRuleName": "Combine images into CSS sprites",
-    "ruleImpact": 0.0
-   }
-  }
- },
- "version": {
-  "major": 1,
-  "minor": 11
- }
-};
-
-// Try logging the outputs below to test your code!
-console.log(ruleList(psinsights));
-console.log(totalBytes(psinsights));
